@@ -1,0 +1,9 @@
+[user]
+	name = Eduardo Torres Davila
+	email = etdavila10@gmail.com
+[core]
+	editor = nvim
+[init]
+	defaultBranch = main
+[pull]
+	rebase = false
