@@ -8,3 +8,10 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt.spell = true
     end
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { 'text', 'markdown', 'latex' },
+    callback = function()
+        vim.opt.wrap = true
+    end
+})
