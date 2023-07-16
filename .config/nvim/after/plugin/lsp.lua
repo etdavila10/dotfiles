@@ -25,19 +25,6 @@ lsp.set_sign_icons({
     info = '»'
 })
 
-local cmp = require('cmp')
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
-local cmp_mappings = lsp.defaults.cmp_mappings({
-    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-    ['<C-Space>'] = cmp.mapping.complete()
-})
-
-lsp.setup_nvim_cmp({
-    mapping = cmp_mappings
-})
-
 lsp.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
 
@@ -52,10 +39,56 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
 end)
 
-require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+local lspconfig = require('lspconfig')
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+------------------------
+--- EMMET LSP CONFIG ---
+------------------------
+lspconfig.emmet_ls.setup({
+    -- on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
+    init_options = {
+      html = {
+        options = {
+          -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+          ["bem.enabled"] = true,
+        },
+      },
+    }
+})
+
+------------------------
+---- LUA LSP CONFIG ----
+------------------------
+lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
+
+lspconfig.texlab.setup({})
 
 lsp.setup()
 
+-------------------------
+---- NVIM CMP CONFIG ----
+-------------------------
+local cmp = require('cmp')
 
+local cmp_mappings = {
+    ['<C-Space>'] = cmp.mapping.complete()
+}
 
-
+cmp.setup({
+    sources = {
+        {name = 'nvim_lsp'}
+    },
+    preselect = 'item',
+    completion = {
+        completeopt = 'menu,menuone,noinsert'
+    },
+    mapping = cmp_mappings,
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered()
+    }
+})

@@ -3,15 +3,36 @@ require('etdavila.remap')
 require('etdavila.lazy')
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { 'html', 'text', 'markdown', 'latex' },
+    pattern = { 'html', 'text', 'markdown', 'tex' },
     callback = function()
         vim.opt.spell = true
     end
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { 'text', 'markdown', 'latex' },
+    pattern = { 'text', 'markdown', 'tex' },
     callback = function()
         vim.opt.wrap = true
+    end
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = {
+        'markdown',
+        'html',
+        'javascript',
+        'javascriptreact',
+        'typescript',
+        'typescriptreact',
+        'css',
+        'bib',
+        'json',
+        'sass',
+        'scss'
+    },
+    callback = function()
+        vim.opt.tabstop = 2
+        vim.opt.softtabstop = 2
+        vim.opt.shiftwidth = 2
     end
 })

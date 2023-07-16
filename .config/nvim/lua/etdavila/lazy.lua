@@ -16,6 +16,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+    --- netrw beautifier
+    { 'tpope/vim-vinegar' },
     --- Telescope
     {
         'nvim-telescope/telescope.nvim', tag = '0.1.2',
@@ -33,6 +35,8 @@ require('lazy').setup({
 
     --- Treesitter
     { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+
+    { 'nvim-treesitter/playground' },
 
     --- Harpoon
     { 'theprimeagen/harpoon' },
