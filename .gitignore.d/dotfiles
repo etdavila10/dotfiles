@@ -1,0 +1,28 @@
+# Exclude everything from tracking
+*
+
+# Explanation
+# !/.* - Match files/directories that start with a dot (.*) in the root
+#        directory (/) and track that in this git repo (!).
+!/.*
+
+# Explanation
+# !/.*/** - Match all files/subdirectories (**) that live in a directory that
+#           begins with a dot (.*/)
+!/.*/**
+
+# Exclude these dotfiles
+**/.DS_Store
+/.cache
+/.CFUserTextEncoding
+/.ssh
+/*.zcompdump*
+vcsh
+/.Trash
+/.pyenv
+/.npm
+/.zsh_sessions
+/.local
+/.gradle
+/.dropbox
+/.config/nvim/undodir
