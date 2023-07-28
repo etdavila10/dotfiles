@@ -16,6 +16,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+
+    --- Seamless switching between tmux panes and vim panes
+    { 'christoomey/vim-tmux-navigator' },
     --- netrw beautifier
     { 'tpope/vim-vinegar' },
     --- Telescope
