@@ -49,7 +49,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 lspconfig.emmet_ls.setup({
     -- on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
+    filetypes = { "astro", "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
     init_options = {
       html = {
         options = {
@@ -79,9 +79,12 @@ local cmp_mappings = {
 }
 
 cmp.setup({
-    sources = {
-        {name = 'nvim_lsp'}
-    },
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' }
+    }, {
+        { name = 'buffer' },
+        { name = 'path' }
+    }),
     preselect = 'item',
     completion = {
         completeopt = 'menu,menuone,noinsert'

@@ -26,3 +26,4 @@ vcsh
 /.gradle
 /.dropbox
 /.config/nvim/undodir
+/.vscode
