@@ -10,6 +10,14 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
+    pattern = 'netrw',
+    callback = function()
+        vim.api.nvim_buf_set_keymap(0, 'n', '<C-l>', ':TmuxNavigateRight<CR>',
+            { silent = true, noremap = true })
+    end
+})
+
+vim.api.nvim_create_autocmd("FileType", {
     pattern = { 'text', 'markdown', 'tex' },
     callback = function()
         vim.opt.wrap = true

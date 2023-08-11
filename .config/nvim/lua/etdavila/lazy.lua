@@ -117,4 +117,6 @@ require('lazy').setup({
     -- Commenting engine
     { 'numToStr/Comment.nvim', opts = {} },
 
+    -- Smooth Scrolling
+    { 'karb94/neoscroll.nvim' }
 })
