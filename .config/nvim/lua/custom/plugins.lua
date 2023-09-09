@@ -108,6 +108,10 @@ local plugins = {
       })
     end,
     dependencies = { {'nvim-tree/nvim-web-devicons'}}
+  },
+  {
+    "NvChad/nvterm",
+    enabled = false
   }
 
   -- To make a plugin not be loaded
