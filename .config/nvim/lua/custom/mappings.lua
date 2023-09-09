@@ -24,6 +24,21 @@ M.telescope = {
   }
 }
 
+M.lspconfig = {
+  plugin = true,
+
+  -- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
+
+  n = {
+    ["<leader>ld"] = {
+      function()
+        vim.diagnostic.open_float { border = "rounded" }
+      end,
+      "Floating diagnostic",
+    }
+  }
+}
+
 M.nvterm = {
   plugin = true,
 
