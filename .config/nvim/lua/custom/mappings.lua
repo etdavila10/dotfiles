@@ -39,6 +39,10 @@ M.lspconfig = {
   }
 }
 
+M.vimtex = {
+  plugin = true,
+}
+
 M.harpoon = {
   plugin = true,
 
@@ -69,7 +73,5 @@ M.harpoon = {
     }
   }
 }
-
--- more keybinds!
 
 return M

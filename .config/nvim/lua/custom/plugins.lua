@@ -110,6 +110,10 @@ local plugins = {
     dependencies = { {'nvim-tree/nvim-web-devicons'}}
   },
   {
+    'lervag/vimtex',
+    ft = "tex"
+  },
+  {
     "NvChad/nvterm",
     enabled = false
   }
