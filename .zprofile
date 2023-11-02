@@ -1,1 +1,1 @@
-eval "$(/usr/local/bin/brew shellenv)"
+alias ls=exa

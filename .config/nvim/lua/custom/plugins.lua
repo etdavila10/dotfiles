@@ -116,7 +116,16 @@ local plugins = {
   {
     "NvChad/nvterm",
     enabled = false
+  },
+  {
+    'akinsho/toggleterm.nvim',
+    lazy = false,
+    version = '*',
+    config = function()
+      require('toggleterm').setup()
+    end
   }
+
 
   -- To make a plugin not be loaded
   -- {
